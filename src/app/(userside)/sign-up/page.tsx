@@ -57,10 +57,10 @@ const SignUp = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA] py-12 px-4">
+        <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA] dark:bg-transparent  py-12 px-4">
             <Card className="max-w-md w-full space-y-8 p-8 rounded-2xl shadow-lg border-0 bg-white">
                 <div className="flex flex-col items-center gap-2">
-                    <div className="text-3xl font-bold gradient-text">FinanseNest</div>
+                    <div className="text-3xl font-bold gradient-text dark:text-black">FinanseNest</div>
                     <div className="mt-1 text-lg text-gray-700 font-medium">Create your account</div>
                 </div>
 
@@ -73,7 +73,7 @@ const SignUp = () => {
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="name" {...field} />
+                                        <Input placeholder="Name" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -86,7 +86,7 @@ const SignUp = () => {
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="email" {...field} />
+                                        <Input placeholder="Email" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -99,13 +99,13 @@ const SignUp = () => {
                                 <FormItem>
                                     <FormLabel>Password</FormLabel>
                                     <FormControl>
-                                        <Input type={'password'} placeholder="password" {...field} />
+                                        <Input type={'password'} placeholder="Password" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className={'bg-finanse-primary w-full'} disabled={loading}>Submit</Button>
+                        <Button type="submit" className={'bg-finanse-primary text-white w-full cursor-pointer'} disabled={loading}>Submit</Button>
                     </form>
                 </Form>
 

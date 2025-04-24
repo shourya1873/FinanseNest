@@ -21,10 +21,12 @@ import { z } from "zod"
 import {trpc} from "@/server/client";
 import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
+import {useCustomerStore} from "@/store/useCustomerStore";
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const { setCustomer } = useCustomerStore();
 
     const form = useForm<z.infer<typeof loginInputSchema>>({
         resolver: zodResolver(loginInputSchema),
@@ -34,31 +36,39 @@ const Login = () => {
         },
     });
 
-    // const signup = trpc.user.signup.useMutation();
+    const login = trpc.user.login.useMutation();
 
     async function onSubmit(values: z.infer<typeof loginInputSchema>) {
         setLoading(true);
         try {
-            // const result = await signup.mutateAsync(values);
-            // if (result?.success) {
-            //     toast.success("Login successful");
-            //     router.push('/login');
-            // } else {
-            //     toast.error("Something went wrong");
-            // }
+            const result = await login.mutateAsync(values);
+            if (result?.success) {
+                await fetch("/api/auth/set-cookie", {
+                    method: "POST",
+                    body: JSON.stringify({ token: result?.token }),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                useCustomerStore.getState().setCustomer(result?.userData);
+                toast.success("Login successful!");
+                router.push("/dashboard");
+            } else {
+                toast.error(result?.message);
+            }
         } catch (err) {
             console.error('Signup error:', err);
             toast.error("Something went wrong");
         } finally {
             setLoading(false);
         }
-    };
+    }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA] py-12 px-4">
+        <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA] dark:bg-transparent py-12 px-4">
             <Card className="max-w-md w-full space-y-8 p-8 rounded-2xl shadow-lg border-0 bg-white">
                 <div className="flex flex-col items-center gap-2">
-                    <div className="text-3xl font-bold gradient-text">FinanseNest</div>
+                    <div className="text-3xl font-bold gradient-text dark:text-black">FinanseNest</div>
                     <div className="mt-1 text-lg text-gray-700 font-medium">Login to your account</div>
                 </div>
 
@@ -71,7 +81,7 @@ const Login = () => {
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="email" {...field} />
+                                        <Input placeholder="Email" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -84,13 +94,13 @@ const Login = () => {
                                 <FormItem>
                                     <FormLabel>Password</FormLabel>
                                     <FormControl>
-                                        <Input type={'password'} placeholder="password" {...field} />
+                                        <Input type={'password'} placeholder="Password" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className={'bg-finanse-primary w-full'} disabled={loading}>Submit</Button>
+                        <Button type="submit" className={'bg-finanse-primary text-white w-full cursor-pointer'} disabled={loading}>Submit</Button>
                     </form>
                 </Form>
 
