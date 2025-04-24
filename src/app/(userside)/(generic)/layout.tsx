@@ -1,6 +1,6 @@
 import type {Metadata} from "next";
 import {Geist, Geist_Mono} from "next/font/google";
-import "./../globals.css";
+import "../../globals.css";
 import {ThemeProvider} from "@/components/theme-provider"
 import {Navbar} from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
@@ -28,6 +28,7 @@ export default function RootLayout(
     }: Readonly<{
         children: React.ReactNode;
     }>) {
+
     return (
         <html lang="en" suppressHydrationWarning>
         <body
@@ -40,7 +41,7 @@ export default function RootLayout(
             disableTransitionOnChange
         >
             <TRPCProvider>
-                <Toaster />
+                <Toaster/>
                 <Navbar/>
                 {children}
                 <Footer/>

@@ -36,7 +36,7 @@ export function Navbar() {
 
     return (
         <nav className="sticky hrefp-0 w-full bg-white/80 dark:bg-transparent backdrop-blur-md z-50 shadow-sm">
-            <div className=" mx-auhref px-4 sm:px-6 lg:px-8">
+            <div className=" mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <Link href="/" className="flex-shrink-0 flex items-center">
