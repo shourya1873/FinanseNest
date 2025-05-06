@@ -33,16 +33,22 @@ model Category {
 }
 
 model Transaction {
-  id          Int      @id @default(autoincrement())
+  id          Int             @id @default(autoincrement())
   user_id     Int
   category_id Int
   amount      Float
+  type        TransactionType
   date        DateTime
   description String?
-  created_at  DateTime @default(now())
+  created_at  DateTime        @default(now())
 
   user     User     @relation(fields: [user_id], references: [id])
   category Category @relation(fields: [category_id], references: [id])
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
 }
 
 enum Role {

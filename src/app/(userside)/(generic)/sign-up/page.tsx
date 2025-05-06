@@ -58,7 +58,7 @@ const SignUp = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA] dark:bg-transparent  py-12 px-4">
-            <Card className="max-w-md w-full space-y-8 p-8 rounded-2xl shadow-lg border-0 bg-white">
+            <Card className="max-w-md w-full space-y-4 p-8 rounded-2xl shadow-lg border-0 bg-white">
                 <div className="flex flex-col items-center gap-2">
                     <div className="text-3xl font-bold gradient-text dark:text-black">FinanseNest</div>
                     <div className="mt-1 text-lg text-gray-700 font-medium">Create your account</div>

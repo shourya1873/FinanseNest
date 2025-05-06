@@ -94,7 +94,12 @@ const DashboardNavbar = () => {
                                 </DropdownMenuTrigger>
 
                                 <DropdownMenuContent align="end" className="w-48">
-                                    {/*<DropdownMenuSeparator />*/}
+                                    <DropdownMenuItem
+                                        className=""
+                                    >
+                                        Hey {customer?.name}
+                                    </DropdownMenuItem>
+                                    <DropdownMenuSeparator />
                                     <DropdownMenuItem onClick={logout} className="text-red-600">
                                         Log out
                                     </DropdownMenuItem>
@@ -193,6 +198,11 @@ const DashboardNavbar = () => {
                             </DropdownMenuTrigger>
 
                             <DropdownMenuContent align="end" className="w-48">
+                                <DropdownMenuItem
+                                    className=""
+                                >
+                                    Hey {customer?.name}
+                                </DropdownMenuItem>
                                 <DropdownMenuItem
                                     onClick={logout}
                                     className="text-red-600"
