@@ -1,6 +1,7 @@
-import { initTRPC } from '@trpc/server';
+import { t } from "./t-core";
+import { isAuthed } from "./isAuthed";
 
-const t = initTRPC.create();
-
+export const router = t.router;
 export const publicProcedure = t.procedure;
+export const protectedProcedure = publicProcedure.use(isAuthed);
 export { t };

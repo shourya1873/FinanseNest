@@ -100,7 +100,7 @@ const DashboardNavbar = () => {
                                         Hey {customer?.name}
                                     </DropdownMenuItem>
                                     <DropdownMenuSeparator />
-                                    <DropdownMenuItem onClick={logout} className="text-red-600">
+                                    <DropdownMenuItem onClick={logout} className="cursor-pointer text-red-600">
                                         Log out
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
@@ -205,7 +205,7 @@ const DashboardNavbar = () => {
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
                                     onClick={logout}
-                                    className="text-red-600"
+                                    className="text-red-600 cursor-pointer"
                                 >
                                     Log out
                                 </DropdownMenuItem>

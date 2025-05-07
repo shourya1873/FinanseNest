@@ -89,7 +89,7 @@ export function Navbar() {
                             <Button
                                 variant="outline"
                                 size="default"
-                                className="w-full bg-finanse-primary text-white"
+                                className="w-full cursor-pointer bg-finanse-primary text-white"
                                 onClick={logout}
                             >
                                 Log out
@@ -191,7 +191,7 @@ export function Navbar() {
                             <Button
                                 variant="outline"
                                 size="default"
-                                className="w-full bg-finanse-primary text-white"
+                                className="w-full cursor-pointer bg-finanse-primary text-white"
                                 onClick={logout}
                             >
                                 Log out
