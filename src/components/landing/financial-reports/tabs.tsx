@@ -13,7 +13,7 @@ export function CustomTab() {
         <TabsTrigger value="savings">Savings</TabsTrigger>
       </TabsList>
       <TabsContent value="overview">
-        <div className="flex w-full gap-4">
+        <div className="flex flex-col md:flex-row w-full gap-4">
           <div className="flex-1">
             <CustomBarChart />
           </div>
